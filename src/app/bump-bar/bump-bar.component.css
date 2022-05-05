@@ -1,6 +1,9 @@
-#logo{
-
+#logo {
     height: 4pc;
     width: 8pc;
-
-}
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    left: calc((100% - 195px) / 2);
+    z-index: 10;
+  }
