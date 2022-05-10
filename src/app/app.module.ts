@@ -9,6 +9,7 @@ import { DownBarComponent } from './down-bar/down-bar.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { NouveauProgrammeComponent } from './nouveau-programme/nouveau-programme.component';
+import { MesProgrammesComponent } from './mes-programmes/mes-programmes.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NouveauProgrammeComponent } from './nouveau-programme/nouveau-programme
     DownBarComponent,
     ConnexionComponent,
     InscriptionComponent,
-    NouveauProgrammeComponent
+    NouveauProgrammeComponent,
+    MesProgrammesComponent
   ],
   imports: [
     BrowserModule,
