@@ -1,7 +1,27 @@
-<form>
+<style>
+    
+  .center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  </style>
 
-<fieldset>
-  <legend>Que souhaitez-vous entrainer aujourd'hui :</legend>
+<form style="background-color:rgba(0, 0, 0, 0.886); color:#f8f8f8" >
+
+<fieldset >
+
+  <legend style="color:#f8f8f8" >Quel est la durée de votre entrainement d'aujourd'hui :</legend>
+  <div>
+    <input type="text" id="heure " name="heure">
+    <label for="heure">   Heure</label>
+    <input type="text" id="minute " name="minute">
+    <label for="minute">   Minutes</label>
+  </div>
+
+  <legend style="color:#f8f8f8" >Que souhaitez-vous entrainer aujourd'hui :</legend>
 
   <div>
     <input type="checkbox" id="pectoraux " name="pectoraux">
@@ -65,8 +85,8 @@
   
 </fieldset>
 
-  <fieldset>
-    <legend>Quel matériel avez vous à votre disposition :</legend>
+  <fieldset >
+    <legend style="color:#f8f8f8" >Quel matériel avez vous à votre disposition :</legend>
 
     <div>
       <input type="checkbox" id="haleteres " name="haleteres">
@@ -117,7 +137,10 @@
       <input type="checkbox" id="corde-a-sauter" name="corde-a-sauter">
       <label for="corde-a-sauter">Corde à sauter</label>
     </div>
-    
   </fieldset>
+
+<div class="center">
+    <button style="color:#000000"  type="submit" >Générer votre entrainement</button>
+</div>
 
 </form>
