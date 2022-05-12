@@ -1,51 +1,64 @@
 <body style="background-color:rgba(0, 0, 0, 0.866);">
-    <div class="card" style="width: 18rem;"  >
-    <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-      <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 1</h5>
-      <a href="#" class="card-link">Détail</a>
-    </div>
-    </div>
-    <div class="card" style="width: 18rem;"  >
-        <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-          <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 2</h5>
-          <a href="#" class="card-link">Détail</a>
-        </div>
-        </div>
-        <div class="card" style="width: 18rem;"  >
-            <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-              <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 3</h5>
-              <a href="#" class="card-link">Détail</a>
-            </div>
-            </div>
-                <div class="card" style="width: 18rem;"  >
-    <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-      <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 4</h5>
-      <a href="#" class="card-link">Détail</a>
-    </div>
-    </div>
-    <div class="card" style="width: 18rem;"  >
-        <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-          <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 5</h5>
-          <a href="#" class="card-link">Détail</a>
-        </div>
-        </div>
-        <div class="card" style="width: 18rem;"  >
-            <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-              <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 6</h5>
-              <a href="#" class="card-link">Détail</a>
-            </div>
-            </div>
-            <div class="card" style="width: 18rem;"  >
-                <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-                  <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 7</h5>
-                  <a href="#" class="card-link">Détail</a>
-                </div>
-                </div>
 
-                <div class="card" style="width: 18rem;"  >
-                    <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-                      <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 8</h5>
-                      <a href="#" class="card-link">Détail</a>
-                    </div>
-                    </div>
+
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Chercher par le nom"
+        [(ngModel)]="nom"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Chercher un entrainement
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Training List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let activite of activites; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveActivite(activite, i)"
+      >
+        {{ activite.nom }}
+      </li>
+    </ul>
+    <div class="card" style="width: 18rem;"  >
+      <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
+        <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 1</h5>
+        <a href="#" class="card-link">Détail</a>
+      </div> 
+      </div>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllActivites()">
+      Supprimer mes entrainements
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentActivite.id">
+      <h4>Entrainement</h4>
+      <div>
+        <label><strong>Nom:</strong></label> {{ currentActivite.nom }}
+      </div>
+      
+   
+      <a class="badge badge-warning" routerLink="/tutorials/{{ currentActivite.id }}">
+        Edit
+      </a>
+    </div>
+    <div *ngIf="!currentActivite">
+      <br />
+      <p>Please click on a Tutorial...</p>
+    </div>
+  </div>
+</div>
 </body>

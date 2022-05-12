@@ -129,7 +129,13 @@
   </fieldset>
 
 <div class="center">
-    <button style="color:#000000"  type="submit" >Générer votre entrainement</button>
+  <button style="color:#000000"  (click)="saveActivite()" class="btn btn-success">Générer votre entrainement</button>
+</div>
+
+
+<div *ngIf="submitted">
+  <h4>Nouvel entrainement</h4>
+  <button class="btn btn-success" (click)="newActivite()">Creation</button>
 </div>
 
 </form>
