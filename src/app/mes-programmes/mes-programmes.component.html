@@ -2,62 +2,41 @@
 
 
 <div class="list row">
-  <div class="col-md-8">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Chercher par le nom"
-        [(ngModel)]="nom"
-      />
-      <div class="input-group-append">
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="searchTitle()"
-        >
-          Chercher un entrainement
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <h4>Training List</h4>
+  <div style="color: white" class="col-md-6">
+    <h4>Liste des entrainements</h4>
     <ul class="list-group">
-      <li
+      <li 
         class="list-group-item"
-        *ngFor="let activite of activites; let i = index"
+        *ngFor="let entrainement of entrainements; let i = index"
         [class.active]="i == currentIndex"
-        (click)="setActiveActivite(activite, i)"
+        (click)="setActiveEntrainement(entrainement, i)"
       >
-        {{ activite.nom }}
+        entrainement {{ entrainement.id }}
+        ({{ currentEntrainement.duree }}*60) minutes
+        Entrainement {{ currentEntrainement.activites }}
+
       </li>
     </ul>
-    <div class="card" style="width: 18rem;"  >
-      <div class="card-body" style="background-color:rgba(20, 20, 20, 0.892);">
-        <h5 class="card-title" style = "color: rgb(255, 255, 255);">Entrainement 1</h5>
-        <a href="#" class="card-link">Détail</a>
-      </div> 
-      </div>
-    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllActivites()">
+    
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllEntrainements()">
       Supprimer mes entrainements
     </button>
   </div>
-  <div class="col-md-6">
-    <div *ngIf="currentActivite.id">
+  <div style="color: white" class="col-md-6">
+    <div *ngIf="currentEntrainement.id">
       <h4>Entrainement</h4>
       <div>
-        <label><strong>Nom:</strong></label> {{ currentActivite.nom }}
+        <label><strong>Nom:</strong></label> Entrainement {{ currentEntrainement.id }}
+        <label><strong>Duree:</strong></label> ({{ currentEntrainement.duree }}*60)
+        <label><strong>Exercices:</strong></label> Entrainement {{ currentEntrainement.activites }}
+
       </div>
       
-   
-      <a class="badge badge-warning" routerLink="/tutorials/{{ currentActivite.id }}">
-        Edit
-      </a>
+  
     </div>
-    <div *ngIf="!currentActivite">
+    <div *ngIf="!currentEntrainement">
       <br />
-      <p>Please click on a Tutorial...</p>
+      <p>entrainement</p>
     </div>
   </div>
 </div>

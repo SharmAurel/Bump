@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Activite } from 'src/app/models/activite.model';
-import { ActiviteService } from 'src/app/services/activite.service';
+import { Entrainement } from 'src/app/models/entrainement.model';
+import { EntrainementService } from 'src/app/services/entrainement.service';
+import { Activite } from '../models/activite.model';
 @Component({
   selector: 'app-mes-programmes',
   templateUrl: './mes-programmes.component.html',
@@ -8,25 +9,46 @@ import { ActiviteService } from 'src/app/services/activite.service';
 })
 export class MesProgrammesComponent implements OnInit {
 
-  activites?: Activite[];
-  currentActivite: Activite = {};
-  currentIndex = -1;
-  nom= '';
-  materiel= '' ;
-  difficulte='' ;
-  muscle_primaire='';
-  muscle_secondaire='';
-  duree= 4;
+  entrainements?: Entrainement[];
+  activite1: Activite ={
+    id: 1,
+    nom: 'dev couche haltere',
+    materiel: 'halteres',
+    difficulte: 'intermediaire',
+    muscle_primaire: 'pectoraux',
+    muscle_secondaire:'triceps',
+    duree:5
 
-  constructor(private activiteService: ActiviteService) { }
-  ngOnInit(): void {
-    this.retrieveActivites();
   }
-  retrieveActivites(): void {
-    this.activiteService.getAll()
+  activite2: Activite ={
+    id: 2,
+    nom: 'traction',
+    materiel: 'barre_traction',
+    difficulte: 'difficle',
+    muscle_primaire: 'dorsaux',
+    muscle_secondaire:'biceps',
+    duree:5
+
+  }
+  currentEntrainement: Entrainement = {
+    id:'1',
+    duree:600,
+    activites:[this.activite1,this.activite2]
+  };
+  currentIndex = -1;
+  id='';
+  duree='';
+  activites='';
+
+  constructor(private entrainementService: EntrainementService) { }
+  ngOnInit(): void {
+    this.retrieveEntrainements();
+  }
+  retrieveEntrainements(): void {
+    this.entrainementService.getAll()
       .subscribe(
         data => {
-          this.activites = data;
+          this.entrainements = data;
           console.log(data);
         },
         error => {
@@ -34,16 +56,16 @@ export class MesProgrammesComponent implements OnInit {
         });
   }
   refreshList(): void {
-    this.retrieveActivites();
-    this.currentActivite = {};
+    this.retrieveEntrainements();
+    this.currentEntrainement = {};
     this.currentIndex = -1;
   }
-  setActiveActivite(activite: Activite, index: number): void {
-    this.currentActivite = activite;
+  setActiveEntrainement(entrainement: Entrainement, index: number): void {
+    this.currentEntrainement = entrainement;
     this.currentIndex = index;
   }
-  removeAllActivites(): void {
-    this.activiteService.deleteAll()
+  removeAllEntrainements(): void {
+    this.entrainementService.deleteAll()
       .subscribe(
         response => {
           console.log(response);
@@ -53,17 +75,5 @@ export class MesProgrammesComponent implements OnInit {
           console.log(error);
         });
   }
-  searchTitle(): void {
-    this.currentActivite = {};
-    this.currentIndex = -1;
-    this.activiteService.findByName(this.nom)
-      .subscribe(
-        data => {
-          this.activites = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-  }
+  
 }
