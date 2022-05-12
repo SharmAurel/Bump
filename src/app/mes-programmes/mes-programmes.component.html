@@ -8,11 +8,13 @@
       <li 
         class="list-group-item"
         *ngFor="let entrainement of entrainements; let i = index"
+
         [class.active]="i == currentIndex"
         (click)="setActiveEntrainement(entrainement, i)"
+
       >
         entrainement {{ entrainement.id }}
-        ({{ currentEntrainement.duree }}*60) minutes
+        ({{ currentEntrainement.duree }}/60) minutes
         Entrainement {{ currentEntrainement.activites }}
 
       </li>
@@ -27,7 +29,7 @@
       <h4>Entrainement</h4>
       <div>
         <label><strong>Nom:</strong></label> Entrainement {{ currentEntrainement.id }}
-        <label><strong>Duree:</strong></label> ({{ currentEntrainement.duree }}*60)
+        <label><strong>Duree:</strong></label> ({{ currentEntrainement.duree }}/60) minutes
         <label><strong>Exercices:</strong></label> Entrainement {{ currentEntrainement.activites }}
 
       </div>

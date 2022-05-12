@@ -19,7 +19,7 @@ export class MesProgrammesComponent implements OnInit {
     muscle_secondaire:'triceps',
     duree:5
 
-  }
+  };
   activite2: Activite ={
     id: 2,
     nom: 'traction',
@@ -29,12 +29,14 @@ export class MesProgrammesComponent implements OnInit {
     muscle_secondaire:'biceps',
     duree:5
 
-  }
+  };
   currentEntrainement: Entrainement = {
     id:'1',
     duree:600,
-    activites:[this.activite1,this.activite2]
+    activites:[this.activite1,this.activite2],
+
   };
+  
   currentIndex = -1;
   id='';
   duree='';
