@@ -38,7 +38,31 @@ public class Données {
         }
         return a;
     }
+        /*public void envoie(int durée)
+        {
+            String mysqlurl ="jdbc:mysql://localhost/bump";
+            try
+            {
+                Connection con= DriverManager.getConnection(mysqlurl,"root","root");
+                PreparedStatement stm= con.prepareStatement("insert into resultat(duree,activite_une, activite_deux, activite_trois, activite_quatre, activite_cinq, activite_six, activite_sept, activite_huit, activite_neuf, activite_dix, activite_onze, activite_douze) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                int i=0;
+                stm.setInt(1,durée);
+                for(i=1;i<activites.size()+1;i++) {
+                    if(i<13) {
+                        stm.setInt(i+1 , getActivites().get(i-1).getId());
+                    }
+                }
+                while(i<13)
+                {
+                    stm.setNull(i+1, java.sql.Types.INTEGER);
+                    i++;
+                }
+                stm.execute();
 
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }*/
     public List<Activite> getActivites() {
         return activites;
     }

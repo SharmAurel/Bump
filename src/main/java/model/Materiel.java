@@ -1,5 +1,5 @@
 package model;
 
 public enum Materiel {
-    Halteres,Elastiques,Banc,Barre_traction, barre_dips,tapis_course,tapis_sport,machines,poulie,corde_a_sauter
+    Rien,Halteres,Elastiques,Banc,Barre_traction, Barre_dips,Tapis_course,Tapis_sport,Machines,Poulie,Corde_a_sauter
 }
